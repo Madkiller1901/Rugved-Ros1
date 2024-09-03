@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="rugbot2">
+
+  <xacro:include filename="robotmodel.xacro"/>
+
+  <xacro:include filename="diff_drive.xacro"/>
+
+  <xacro:include filename="laser.xacro"/>
+
+  <xacro:include filename="imu.xacro"/>
+
+</robot>

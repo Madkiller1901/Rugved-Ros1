@@ -1,0 +1,39 @@
+amcl:
+  # Odometry Model Parameters
+  odom_model_type: diff-corrected
+  odom_alpha1: 0
+  odom_alpha2: 0
+  odom_alpha3: 0
+  odom_alpha4: 0
+
+  # Laser Model Parameters
+  laser_max_beams: 360
+  laser_max_range: 20
+  laser_min_range: 0.3
+
+  # Particle Filter Parameters
+  min_particles: 1
+  max_particles: 10
+  update_min_d: 0.2
+  update_min_a: 0.1
+  resample_interval: 1
+
+  # Global Localization Parameters
+  initial_pose_x: 0.0
+  initial_pose_y: 0.0
+  initial_pose_a: 0.0
+
+  # Transformation Parameters
+  transform_tolerance: 0.5
+
+  # Covariance Parameters
+  initial_cov_xx: 0.5
+  initial_cov_yy: 0.5
+  initial_cov_aa: 0.2
+
+  # Map Update Parameters
+  min_move_distance: 0.2
+  min_move_angle: 0.2
+
+  # Debugging
+  debug: false

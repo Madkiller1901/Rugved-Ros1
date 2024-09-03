@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+ <node name="centering_node" pkg="rugbot2" type="centering_node.py" output="screen">
+ </node>
+</launch> 

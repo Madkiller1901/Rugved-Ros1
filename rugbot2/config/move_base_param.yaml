@@ -1,0 +1,77 @@
+# Frame names
+global_frame: map
+base_global_planner: navfn/NavfnROS
+base_local_planner: base_local_planner/TrajectoryPlannerROS
+recovery_behaviors: 
+  - {name: conservative_reset, type: clear_costmap_recovery/ClearCostmapRecovery}
+  - {name: aggressive_reset, type: clear_costmap_recovery/ClearCostmapRecovery}
+#recovery_behaviors: [{name: rotate_recovery, type: rotate_recovery/RotateRecovery}]
+controller_frequency: 10.0
+planner_patience: 10.0
+controller_patience: 20.0
+conservative_reset_dist: 3.0
+recovery_behavior_enabled: false
+#clearing_rotation_allowed: false
+shutdown_costmaps: false
+aggressive_reset: {reset_distance: 1.84}
+planner_frequency: 0.0
+max_planning_retries: -1
+
+local_costmap:
+  scan_topic: /rugbot2/scan
+  pointcloud_topic: /particlecloud
+  global_frame: "odom"
+  robot_base_frame: "base_link"
+  update_frequency: 5.0
+  publish_frequency: 2.0
+  static_map: false  # Set to true to use a static map
+  static_map_path: "/home/kaushikthegreat/catkin_ws/src/rugbot2/slamaps/Maps.yaml"
+  rolling_window: true
+  robot_radius: 1.5
+  plugins:
+    - {name: static_layer, type: "costmap_2d::StaticLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+  static_layer:
+    map_topic: "/map"
+
+  inflation_layer:
+    inflation_radius: 0.6
+
+
+global_costmap:
+  scan_topic: /rugbot2/scan  
+  pointcloud_topic: /particlecloud 
+  global_frame: "map"
+  rolling_window: false
+  robot_base_frame: "base_link"
+  update_frequency: 5.0
+  publish_frequency: 2.0
+  static_map: true 
+  static_map_path: "/home/kaushikthegreat/catkin_ws/src/rugbot2/slamaps/Maps.yaml"
+  robot_radius: 1.5
+  plugins:
+    - {name: static_layer, type: "costmap_2d::StaticLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+  static_layer:
+    map_topic: /map
+
+  inflation_layer:
+    inflation_radius: 0.6
+
+TrajectoryPlannerROS:
+  max_vel_x: 2.0
+  min_vel_x: 0.5
+  max_vel_theta: 1.0
+  min_vel_theta: -1.0
+  min_in_place_vel_theta: 0.4
+  escape_vel: -0.10
+  acc_lim_x: 2.5
+  acc_lim_y: 0
+  acc_lim_theta: 5.0
+  tf_buffer_time: 2.3
+  holonomic_robot: false
+  yaw_goal_tolerance: 0.25 # about 15 degrees
+  xy_goal_tolerance: 0.25 # 10 cm
+  latch_xy_goal_tolerance: true
+  sim_time: 2.2

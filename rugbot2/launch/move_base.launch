@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="move_base" type="move_base" name="move_base" output="screen">
+     <rosparam file="/home/kaushikthegreat/catkin_ws/src/rugbot2/config/move_base_param.yaml" command="load" />
+     <remap from="/scan" to="/rugbot2/scan" />
+     <remap from="/point_cloud" to="/particlecloud" />
+  </node>
+</launch>
